@@ -1,5 +1,13 @@
 const express = require('express')
 const app = express()
+const cors = require('cors');
+
+app.use(cors());
+app.use(cors({
+    origin: 'https://test16478.bubbleapps.io'
+  }));
+  
+
 
 app.get('/removeLetter/:word/:letter', (req, res) => {
     res.header("Access-Control-Allow-Origin", "*");
