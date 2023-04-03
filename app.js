@@ -1,18 +1,15 @@
+// Importing express library and creating express application
 const express = require('express')
 const app = express()
-const cors = require('cors');
 
-app.use(cors());
-app.use(cors({
-    origin: 'https://test16478.bubbleapps.io'
-  }));
-  
-
+// Importing cors library and adding cors middleware to the application
+const cors = require('cors')
+app.use(cors())
 
 app.get('/removeLetter/:word/:letter', (req, res) => {
-    res.header("Access-Control-Allow-Origin", "*");
     const word = req.params.word
     const letter = req.params.letter
+    // Matching all cases of letter globally and case insensitive
     const regex = new RegExp(letter, 'gi')
     const newWord = word.replace(regex, '')
     res.send(newWord)
